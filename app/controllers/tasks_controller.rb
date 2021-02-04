@@ -27,10 +27,9 @@ class TasksController < ApplicationController
   end
 
   def update
-
-    if @task.save
+    if @task.update(task_params)
       flash[:success] = '正常に更新されました'
-      redirect_to task_url(@task)
+      redirect_to task_path(@task)
     else
       flash.now[:danger] = '更新に失敗しました'
       render :edit
